@@ -1,0 +1,11 @@
+{
+    "name": "enderconsole",
+    "version": "0.0.1",
+    "description": "",
+    "author": "EnderAdel",
+    "license": "ISC",
+    "dependencies": {
+        "chalk": "^4.1.0",
+        "fs": "0.0.1-security"
+    }
+}
