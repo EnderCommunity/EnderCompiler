@@ -1,9 +1,6 @@
-function Translator(path) {
-    this.path = path;
-}
-
+//The `Translator` Object is already defined! The only value it has is the current work-dir!
+//You can add some functions here that have something to do with the object.
 Translator.prototype.parse = function() {
-    return fs.readFileSync(this.path);
+    //Do some weird shit
 };
-
-module.exports = Translator;
+//Don't add any other functions that are not necessary!
