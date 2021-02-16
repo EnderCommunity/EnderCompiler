@@ -42,7 +42,8 @@ module.exports = function(Console, dir, output, ext, shouldEmptyOutputDir, callb
                             n++;
                             checkLoop(path.join(dir, file));
                         });
-                        setToDone();
+                        if (n == 0)
+                            setToDone();
                     });
                 };
                 checkLoop(output);
