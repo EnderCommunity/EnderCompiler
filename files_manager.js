@@ -31,14 +31,14 @@ module.exports = function(Console, dir, output, ext, shouldEmptyOutputDir, callb
                             filesList.push(new TempFile(path.join(dir, file).replace(/\\/g, "/")));
                         });
                         isStillSearching = false;
-                        const n = 0;
+                        var n = 0;
                         files.filter(file => fs.statSync(path.join(dir, file)).isDirectory()).forEach(function(file) {
                             n++;
                             checkLoop(path.join(dir, file));
                         });
                         if (!isStillSearching && n == 0)
                             setTimeout(function() {
-                                if (!isStillSearching && n == 0)
+                                if (!isStillSearching)
                                     callback(filesList);
                             }, 100);
                     });
