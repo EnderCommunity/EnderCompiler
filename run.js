@@ -1,4 +1,5 @@
-const fs = require('fs');
+const fs = require('fs'),
+    path = require('path');
 
 //[START] Set up the console
 const { Console } = require('./EnderConsole/import');
@@ -30,9 +31,9 @@ args.eV.forEach(function(v) {
     else if (v.indexOf("--to") == 0)
         args.to = v.substring("--to=".length);
     else if (v.indexOf("--input") == 0)
-        args.input = v.substring("--input=".length);
+        args.input = path.resolve(v.substring("--input=".length));
     else if (v.indexOf("--output") == 0)
-        args.output = v.substring("--output=".length);
+        args.output = path.resolve(v.substring("--output=".length));
     else if (v == "--emptyOutputDir")
         args.shouldEmptyOutputDir = true;
     else if (v == "--emptyInputDir")
