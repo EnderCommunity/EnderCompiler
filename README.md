@@ -23,7 +23,7 @@ Node run.js --from="<string>" --to="<string>" --input="<path>" --output="<path>"
 Node run.js --from="EnderHTML" --to="HTML" --input="<path>" --output="<path>" --emptyOutputDir --components="<path>"
 ```
 
-`--components` - The directory of the file that contains instructions on your own custom components
+`--components="<path>"` - The directory of the file that contains instructions on your own custom components
 The file should follow this format:
 ```js
 module.exports = {
