@@ -30,7 +30,8 @@ module.exports = {
     <name>: function(atributes) {
         //Do some stuff
         return "you final HTML code";
-    }
+    },
+    [...]
 };
 ```
 And the `<component>` element should follow the this format:
