@@ -2,7 +2,7 @@ const fs = require('fs'),
     path = require('path');
 
 function TempFile(_path) {
-    this.path = _path;
+    this.path = path.resolve(_path).replace(/\\/g, "/");
     this.name = path.basename(this.path);
 }
 
