@@ -79,6 +79,11 @@ if (args.from == null || args.to == null || args.input == null || args.output ==
                             },
                             loadFile: function(path) {
                                 return new TempFile(path);
+                            },
+                            paths: {
+                                resolve: function(_path) {
+                                    return path.resolve(_path);
+                                }
                             }
                         };
                     try {
