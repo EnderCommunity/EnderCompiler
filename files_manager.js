@@ -36,7 +36,7 @@ module.exports = function(Console, dir, output, ext, shouldEmptyOutputDir, callb
                             n++;
                             checkLoop(path.join(dir, file));
                         });
-                        if (!isStillSearching && n == 0)
+                        if (!isStillSearching && n == 0 && false)
                             setTimeout(function() {
                                 if (!isStillSearching)
                                     callback(filesList);
@@ -44,6 +44,9 @@ module.exports = function(Console, dir, output, ext, shouldEmptyOutputDir, callb
                     });
                 };
                 checkLoop(output);
+                setTimeout(function() {
+                    callback(filesList);
+                }, 8000)
             }
         });
     };
