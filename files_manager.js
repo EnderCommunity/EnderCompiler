@@ -23,30 +23,41 @@ module.exports = function(Console, dir, output, ext, shouldEmptyOutputDir, callb
                 console.error(err);
             } else {
                 var filesList = [],
+                    lastLength = 0,
                     isStillSearching = true,
-                    setToDone = function() {
-                        isStillSearching = false;
+                    waitForLoop = function() {
                         setTimeout(function() {
-                            if (!isStillSearching)
-                                callback(filesList);
-                        }, 200);
+                            if (filesList.length == lastLength) {
+                                if (!isStillSearching)
+                                    callback(filesList);
+                                else
+                                    waitForLoop();
+                            } else {
+                                waitForLoop();
+                            }
+                            lastLength = filesList.length;
+                        }, 10)
                     };
                 var checkLoop = function(dir) {
                     isStillSearching = true;
                     fs.readdir(dir, function(err, files) {
+                        let _ = 0,
+                            __ = 0;
                         files.filter(file => isIncluded(ext, path.join(dir, file))).forEach(function(file) {
                             filesList.push(new TempFile(path.join(dir, file).replace(/\\/g, "/")));
+                            _++;
                         });
-                        var n = 0;
                         files.filter(file => fs.statSync(path.join(dir, file)).isDirectory()).forEach(function(file) {
-                            n++;
                             checkLoop(path.join(dir, file));
+                            __++;
                         });
-                        if (n == 0)
-                            setToDone();
+                        if (_ == 0 || __ == 0)
+                            isStillSearching = false;
+                        delete _, __;
                     });
                 };
                 checkLoop(output);
+                waitForLoop();
             }
         });
     };
