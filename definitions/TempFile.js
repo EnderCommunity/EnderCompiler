@@ -1,5 +1,9 @@
-function TempFile(path) {
-    this.path = path;
+const fs = require('fs'),
+    path = require('path');
+
+function TempFile(_path) {
+    this.path = _path;
+    this.name = path.basename(this.path);
 }
 
 TempFile.prototype.getContent = function() {
@@ -20,5 +24,19 @@ TempFile.prototype.setContent = function(content, callback = function() {}) {
         callback(err);
     });
 }
+
+TempFile.prototype.rename = function(name, callback) {
+    var _this = this,
+        newPath = path.join(this.path.substring(0, this.path.length - this.name.length), name);
+    fs.rename(this.path, newPath, function(error) {
+        if (error) {
+            callback(error);
+        } else {
+            _this.name = name;
+            _this.path = newPath.replace(/\\/g, "/");
+            callback(error);
+        }
+    });
+};
 
 module.exports = TempFile;

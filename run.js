@@ -69,10 +69,17 @@ if (args.from == null || args.to == null || args.input == null || args.output ==
                         }
                     };
                 FilesManager(Console, args.input, args.output, info.SupportedExtensions, args.shouldEmptyOutputDir, function(filesList) {
-                    const filesManager = {
-                        dir: args.output,
-                        originDir: args.input
-                    };
+                    const TempFile = require('./definitions/TempFile'),
+                        filesManager = {
+                            dir: args.output,
+                            originDir: args.input,
+                            exists: function(path) {
+                                return fs.existsSync(path);
+                            },
+                            loadFile: function(path) {
+                                return new TempFile(path);
+                            }
+                        };
                     try {
                         (require(`./languages/${args.from}/start.js`))(IPC, Console, filesManager, filesList, args.to, (require(`./definitions/Translator`))(args.from, args.to, args.output), args.else);
                     } catch (e) {
