@@ -30,6 +30,8 @@ module.exports = function(Console, dir, output, ext, shouldEmptyOutputDir, callb
                             if (filesList.length == lastLength) {
                                 if (!isStillSearching)
                                     callback(filesList);
+                                else
+                                    waitForLoop();
                             } else {
                                 waitForLoop();
                             }
