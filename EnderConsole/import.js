@@ -51,6 +51,7 @@ const Console = {
     },
     close: function() {
         readline.close();
+        process.kill();
     },
     commands: {
 
