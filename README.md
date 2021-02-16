@@ -19,7 +19,7 @@ Node run.js --from="<string>" --to="<string>" --input="<path>" --output="<path>"
 `--emptyOutputDir` - empties the input directory after compiling
 
 ## EnderHTML
-This is a language that only added the ```html<component>``` element to HTML! This language is useful when building websites that have repetitive elements in them. (e.g. footers or navigation bars)
+This is a language that only added the ```html <component>``` element to HTML! This language is useful when building websites that have repetitive elements in them. (e.g. footers or navigation bars)
 
 ```
 Node run.js --from="EnderHTML" --to="HTML" --input="<path>" --output="<path>" --emptyOutputDir --components="<path>"
