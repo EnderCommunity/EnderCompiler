@@ -3,12 +3,12 @@ A modifiable compiler written in JS
 
 ## How to run it
 ```bat
-Node run.js --from="<type>" --to="<type>" --input="<path>" --output="<path>"
+Node run.js --from="<string>" --to="<string>" --input="<path>" --output="<path>"
 ```
 
-`--from="<type>"` - the language you wanna compile
+`--from="<string>"` - the language you wanna compile
 <br>
-`--to="<type>"` - the language you wanna your output to be in
+`--to="<string>"` - the language you wanna your output to be in
 <br>
 `--input="<path>"` - the path of the input folder
 <br>
