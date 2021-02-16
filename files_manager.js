@@ -34,9 +34,11 @@ module.exports = function(Console, dir, output, ext, shouldEmptyOutputDir, callb
                         files.filter(file => fs.statSync(path.join(dir, file)).isDirectory()).forEach(function(file) {
                             checkLoop(path.join(dir, file));
                         });
-                        if (!isStillSearching) {
-                            callback(filesList);
-                        }
+                        if (!isStillSearching)
+                            setTimeout(function() {
+                                if (!isStillSearching)
+                                    callback(filesList);
+                            }, 100);
                     });
                 };
                 checkLoop(output);
