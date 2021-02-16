@@ -31,9 +31,9 @@ args.eV.forEach(function(v) {
     else if (v.indexOf("--to") == 0)
         args.to = v.substring("--to=".length);
     else if (v.indexOf("--input") == 0)
-        args.input = path.resolve(v.substring("--input=".length));
+        args.input = path.resolve(v.substring("--input=".length)).replace(/\\/g, "/");
     else if (v.indexOf("--output") == 0)
-        args.output = path.resolve(v.substring("--output=".length));
+        args.output = path.resolve(v.substring("--output=".length)).replace(/\\/g, "/");
     else if (v == "--emptyOutputDir")
         args.shouldEmptyOutputDir = true;
     else if (v == "--emptyInputDir")
@@ -82,7 +82,7 @@ if (args.from == null || args.to == null || args.input == null || args.output ==
                             },
                             paths: {
                                 resolve: function(_path) {
-                                    return path.resolve(_path);
+                                    return path.resolve(_path).replace(/\\/g, "/");
                                 }
                             }
                         };
