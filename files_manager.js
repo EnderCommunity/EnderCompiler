@@ -23,30 +23,29 @@ module.exports = function(Console, dir, output, ext, shouldEmptyOutputDir, callb
                 console.error(err);
             } else {
                 var filesList = [],
-                    isStillSearching = true;
+                    isStillSearching = true,
+                    setToDone = function() {
+                        isStillSearching = false;
+                        setTimeout(function() {
+                            if (!isStillSearching)
+                                callback(filesList);
+                        }, 200);
+                    };
                 var checkLoop = function(dir) {
                     isStillSearching = true;
                     fs.readdir(dir, function(err, files) {
                         files.filter(file => isIncluded(ext, path.join(dir, file))).forEach(function(file) {
                             filesList.push(new TempFile(path.join(dir, file).replace(/\\/g, "/")));
                         });
-                        isStillSearching = false;
                         var n = 0;
                         files.filter(file => fs.statSync(path.join(dir, file)).isDirectory()).forEach(function(file) {
                             n++;
                             checkLoop(path.join(dir, file));
                         });
-                        if (!isStillSearching && n == 0 && false)
-                            setTimeout(function() {
-                                if (!isStillSearching)
-                                    callback(filesList);
-                            }, 100);
+                        setToDone();
                     });
                 };
                 checkLoop(output);
-                setTimeout(function() {
-                    callback(filesList);
-                }, 8000)
             }
         });
     };
