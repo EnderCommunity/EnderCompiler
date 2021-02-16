@@ -36,7 +36,7 @@ module.exports = {
     [...]
 };
 ```
-And the `<component>` element should follow the this format:
+And the `<component>` element should follow this format:
 ```html
 <component:name [atributes]/>
 <!-- Like: <component:nav selected="2"/> -->
