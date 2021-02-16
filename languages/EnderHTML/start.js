@@ -4,7 +4,7 @@ module.exports = function(ipc, console, filesManager, filesList, language, trans
         components;
     args.forEach(v => {
         if (v[0] == "components")
-            componentsPath = v[1];
+            componentsPath = filesManager.paths.resolve(v[1]);
     });
     if (componentsPath == null)
         throw new Error("The components argument is not present!");
