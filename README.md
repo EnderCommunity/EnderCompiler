@@ -6,9 +6,9 @@ A modifiable compiler written in JS
 Node run.js --from="<string>" --to="<string>" --input="<path>" --output="<path>"
 ```
 
-`--from="<string>"` - the language you wanna compile
+`--from="<string>"` - the language that you want to compile
 <br>
-`--to="<string>"` - the language you wanna your output to be in
+`--to="<string>"` - the language that you want your output to be in
 <br>
 `--input="<path>"` - the path of the input folder
 <br>
