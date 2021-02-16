@@ -17,3 +17,24 @@ Node run.js --from="<string>" --to="<string>" --input="<path>" --output="<path>"
 `--emptyOutputDir` - empties the output directory before compiling
 <br>
 `--emptyOutputDir` - empties the input directory after compiling
+
+## EnderHTML
+```
+Node run.js --from="EnderHTML" --to="HTML" --input="<path>" --output="<path>" --emptyOutputDir --components="<path>"
+```
+
+`--components` - The directory of the file that contains instructions on your own custom components
+The file should follow this format:
+```js
+module.exports = {
+    <name>: function(atributes) {
+        //Do some stuff
+        return "you final HTML code";
+    }
+};
+```
+And the `<component>` element should follow the this format:
+```html
+<component:name [atributes]/>
+<!-- Like: <component:nav selected="2"/> -->
+```
