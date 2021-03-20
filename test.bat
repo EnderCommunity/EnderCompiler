@@ -1,1 +1,1 @@
-Node run.js --from="EnderHTML" --to="HTML" --input=/test --output=/test_output --emptyOutputDir --components=/test/test.def.js
+Node run.js --from="EnderHTML" --to="HTML" --input=test --output=test_output --emptyOutputDir --components=test/test.def.js
