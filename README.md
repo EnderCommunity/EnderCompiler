@@ -6,6 +6,8 @@ A modifiable compiler written in JS
 Node run.js --from="<string>" --to="<string>" --input="<path>" --output="<path>"
 ```
 
+Make sure to run `npm install` first, or you could just run the *first.bat* file. You need NodeJS to run EnderCompiler.
+
 `--from="<string>"` - the language that you want to compile
 <br>
 `--to="<string>"` - the language that you want your output to be in
@@ -41,3 +43,5 @@ And the `<component>` element should follow this format:
 <component:name [atributes]/>
 <!-- Like: <component:nav selected="2"/> -->
 ```
+
+You can test the compiler by running *test.bat*. It will compile the files in *./test*, and save the output in *./test_output*.
