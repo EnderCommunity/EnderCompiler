@@ -1,8 +1,6 @@
 //The `Translator` Object is already defined! The only value it has is the current work-dir!
 //You can add some functions here that have something to do with the object.
 
-const parse = require('html-dom-parser');
-
 module.exports = function(Translator) {
     Translator.prototype.setComponents = function(componentsPath) {
         try {
@@ -12,7 +10,7 @@ module.exports = function(Translator) {
         }
     };
     Translator.prototype.parse = function(code) {
-        var compiledCode = "",
+        /*var compiledCode = "",
             _this = this;
         code = code.toString().split(/(<component:.*\/>)/);
         code.forEach(function(c) {
@@ -26,8 +24,8 @@ module.exports = function(Translator) {
                 }
             } else
                 compiledCode += c;
-        });
-        return compiledCode;
+        });*/
+        return (require("./parse"))(code);
     };
 };
 //Don't add any other functions that are not necessary!
