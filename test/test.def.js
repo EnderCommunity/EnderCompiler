@@ -1,5 +1,5 @@
 module.exports = {
-    somelamename: function(atributes) {
+    somelameelement: function(atributes) {
         return `<text>"${atributes.text}", that's lame...</text>`
     }
 };
