@@ -25,7 +25,7 @@ module.exports = function(Translator) {
             } else
                 compiledCode += c;
         });*/
-        return (require("./parse"))(code);
+        return (require("./parse"))(code, this.components);
     };
 };
 //Don't add any other functions that are not necessary!
